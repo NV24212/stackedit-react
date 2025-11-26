@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as Buffer from "buffer";
+import { Buffer } from "buffer";
 import {uploadToGitHubRepoNotFound, uploadToGitHubSuccessful} from "./AlertEvents";
 
 interface UploadPayload {
@@ -12,7 +12,7 @@ interface UploadPayload {
 export const uploadFileToRegistry = (token: string, name: string, username: string, repo: string, content: string) => {
     const dataToTransport: UploadPayload = {
         "message": "Created from https://samtv12345.github.io/stackedit-react/",
-        "content": `${Buffer.Buffer.from(content).toString('base64')}`
+        "content": `${Buffer.from(content).toString('base64')}`
     }
 
     const requestURL = `https://api.github.com/repos/${username}/${repo}/contents/${encodeURI(name)}`
